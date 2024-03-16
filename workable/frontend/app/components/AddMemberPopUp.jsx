@@ -3,7 +3,7 @@ import { db } from "../firebase.js";
 import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";  
 
-const AddMemberPopup = ({ onClose }) => {
+const AddMemberPopup = ({ close }) => {
 
     const [name, setName] = useState('');
     const [empId, setEmpId] = useState('');
@@ -12,7 +12,7 @@ const AddMemberPopup = ({ onClose }) => {
     const [salary, setSalary] = useState('');
 
     const onSubmit = async(e)=>{
-        e.preventDefault();
+        
         try {
             const docRef = doc(db,'Employees',empId);
 
@@ -29,16 +29,14 @@ const AddMemberPopup = ({ onClose }) => {
             console.log(error);
         }
 
-        onClose()
+        
     }
 
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <button className="absolute top-0 right-0 p-2" onClick={onClose()}>
-            &times;
-          </button>
-          <h2 className="text-lg font-semibold mb-4">Add Member</h2>
+          
+          <h2 className="text-lg text-black font-semibold mb-4">Add Member</h2>
           <form onSubmit={onSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -111,11 +109,20 @@ const AddMemberPopup = ({ onClose }) => {
               />
             </div>
             {/* Similar fields for phone, role, and salary */}
+            <div className="flex justify-between">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               type="submit">
                 Add
             </button>
+            <button
+              onClick={close}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
+                Close
+            </button>
+            </div>
+            
           </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { db } from "../firebase.js";
-import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import AddMemberPopup from "./AddMemberPopUp.jsx"; 
 
@@ -11,12 +11,20 @@ import AddMemberPopup from "./AddMemberPopUp.jsx";
 
     const openPopup = () => {
         setShowPopup(true);
+        console.log(showPopup);
       };
 
     const closePopup = () => {
         setShowPopup(false);
       };
     
+
+    const handleRemove = async (id) => {
+        const docRef = doc(db, 'Employees', id);
+        await deleteDoc(docRef);
+        // Remove the deleted item from the state
+        setData(data.filter(item => item.id !== id));
+       };
 
 
     async function getData(){
@@ -50,14 +58,14 @@ import AddMemberPopup from "./AddMemberPopUp.jsx";
                     {/* <button onClick={()=>{getData()}}>get Data</button> */}
                 </div>
                 <div className="mt-3 md:mt-0">
-                    <a
+                    <button
                         onClick={openPopup}
                         className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm"
                     >
                         Add member
-                    </a>
+                    </button>
                 </div>
-                {showPopup && <AddMemberPopup onClose={closePopup}/>}
+                {showPopup && <AddMemberPopup close={closePopup} />}
             </div>
             <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
                 <table className="w-full table-auto text-sm text-left">
@@ -89,7 +97,7 @@ import AddMemberPopup from "./AddMemberPopUp.jsx";
                                         <a href="javascript:void()" className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
                                             Edit
                                         </a>
-                                        <button href="javascript:void()" className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
+                                        <button onClick={() => handleRemove(item.id)} className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
                                             Delete
                                         </button>
                                     </td>
