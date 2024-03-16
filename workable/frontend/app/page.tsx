@@ -18,7 +18,6 @@ export default function Home() {
     // Add more navigation items as needed
   ];
   return (<>
-   <FloatingNav navItems={navItems} className="nav-bar"/>
   <div className="h-screen flex items-center justify-center">
   <Head>
     <title>Workable Landing</title>
@@ -38,13 +37,20 @@ export default function Home() {
                    style={{ height: "300px", width: "300px" }}
                                  /> 
         <p className="text-lg p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.</p>
+        <button
+  className="relative px-8 py-2 rounded-md bg-white text-black border-2 border-black isolation-auto z-10 overflow-hidden transition-all duration-700 hover:bg-black hover:text-white"
+>
+  Log In
+</button>
+
+
       </div>
     </div>
 
     {/* Right side of the page */}
     <div className="w-1/2 h-full bg-black flex justify-center items-center">
       <div className="text-white text-center">
-        <h1 className="text-5xl font-bold mb-4">Discover the Future</h1>
+        <h1 className="text-5xl font-bold mb-4">Applicants Here</h1>
         <Player
                    autoplay
                    speed={1.5}
@@ -53,6 +59,16 @@ export default function Home() {
                    style={{ height: "300px", width: "300px" }}
                                  /> 
         <p className="text-lg p-4">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <div className="flex justify-center gap-4">
+        <button className="relative px-8 py-2 rounded-md bg-black text-white border-2 border-white isolation-auto z-10 overflow-hidden transition-all duration-700 hover:bg-white hover:text-black">
+           Apply Here
+        </button>
+        <button className="relative px-8 py-2 rounded-md bg-white text-black border-2 border-black isolation-auto z-10 overflow-hidden transition-all duration-700 hover:bg-white hover:text-black">
+           Check Status
+        </button>
+        </div>
+        
+
       </div>
     </div>
   </div>  
