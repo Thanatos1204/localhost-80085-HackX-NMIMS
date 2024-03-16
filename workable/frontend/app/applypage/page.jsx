@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import StepWithLine from "../components/stepsWithLines"
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { db } from "../firebase.js";
+import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";  
 
 const Application = () => {
     const [name, setName] = useState('');
@@ -17,15 +20,19 @@ const Application = () => {
         e.preventDefault();
         // Here you can send the form data to Firestore or your preferred backend
         const formData = {
-            name,
-            phone,
-            email,
-            linkedin,
-            resume,
-            experience,
-            role
+            Name: name,
+            Phone_No: phone,
+            Email: email,
+            LinkedInLink: linkedin,
+            Resume: resume,
+            YoE: experience,
+            Role: role
         };
         console.log(formData);
+        const docRef = doc(db,'Applicants',phone);
+        await setDoc(docRef,formData);
+        console.log("Pushed Data");
+       
     };
 
     return (<>
