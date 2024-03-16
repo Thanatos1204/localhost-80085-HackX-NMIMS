@@ -27,3 +27,5 @@ const StepWithLine = () => {
         </div>
     )
 }
+
+export default StepWithLine;

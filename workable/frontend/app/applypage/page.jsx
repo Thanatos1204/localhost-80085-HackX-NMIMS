@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
+import StepWithLine from "../components/stepsWithLines"
 
 const Application = () => {
     const [name, setName] = useState('');
@@ -26,8 +27,11 @@ const Application = () => {
         console.log(formData);
     };
 
-    return (
+    return (<>
+        <StepWithLine></StepWithLine>
         <div className="flex h-screen">
+
+        
         {/* Job Application Form */}
         <div className="w-1/3 bg-white p-8">
         <h1 className="text-3xl text-black font-semibold text-center mb-8">Job Application Form</h1>
@@ -73,6 +77,8 @@ const Application = () => {
             
         </div>
     </div>
+    </>
+        
     );
 };
 
