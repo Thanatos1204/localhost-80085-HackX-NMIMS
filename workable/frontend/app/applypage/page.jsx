@@ -7,6 +7,10 @@ import { db } from "../firebase.js";
 import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";  
 
+
+
+
+
 const Application = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
