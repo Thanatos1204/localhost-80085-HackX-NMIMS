@@ -37,7 +37,8 @@ const Application = () => {
             LinkedInLink: linkedin,
             Resume: resume,
             YoE: experience,
-            Role: role
+            Role: role,
+            Resume: resBase64,
         };
         console.log(formData);
         const docRef = doc(db,'Applicants',phone);
