@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import StepWithLine from "../components/stepsWithLines"
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 const Application = () => {
     const [name, setName] = useState('');
@@ -71,10 +72,15 @@ const Application = () => {
                 </div>                
                 <button type="submit" className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">Submit Application</button>
             </form>
-        </div>
-        {/* Lottie Animation */}
+        </div>       
         <div className="w-2/3 bg-gray-200">
-            
+        <Player
+                   autoplay
+                   speed={1.5}
+                   loop
+                   src="https://lottie.host/e8b16c97-b290-4ac4-b573-7df929029e14/LzbW0QUqqD.json"
+                   style={{ height: "300px", width: "300px" }}
+                                 />
         </div>
     </div>
     </>
