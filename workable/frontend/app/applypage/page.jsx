@@ -31,7 +31,7 @@ const Application = () => {
             reader.onerror = function (error) {
               reject(error);
             };
-            reader.readAsDataURL(pdfurl);
+            reader.readAsDataURL(resume);
             
           });
         const formData = {
