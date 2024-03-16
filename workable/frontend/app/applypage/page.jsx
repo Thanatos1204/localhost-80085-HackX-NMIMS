@@ -15,6 +15,17 @@ const Application = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Here you can send the form data to Firestore or your preferred backend
+        let resBase64 = await new Promise((resolve, reject) => {
+            let reader = new FileReader();
+            reader.onload = function () {
+              resolve(reader.result);
+            };
+            reader.onerror = function (error) {
+              reject(error);
+            };
+            reader.readAsDataURL(pdfurl);
+            
+          });
         const formData = {
             name,
             phone,
@@ -22,7 +33,8 @@ const Application = () => {
             linkedin,
             resume,
             experience,
-            role
+            role,
+            resBase64
         };
         console.log(formData);
     };
