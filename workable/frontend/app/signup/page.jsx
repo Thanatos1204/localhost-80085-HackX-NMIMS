@@ -21,8 +21,8 @@ export default function LoginPage() {
                 <div className="">
                     <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" />
                     <div className="mt-5 space-y-2">
-                        <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Log In</h3>
-                        <p className="">Create new account? <a href="javascript:void(0)" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a></p>
+                        <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Sign up</h3>
+                        <p className="">Already have an account? <a href="javascript:void(0)" className="font-medium text-indigo-600 hover:text-indigo-500">Log in</a></p>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-x-3">
@@ -74,7 +74,16 @@ export default function LoginPage() {
                     onSubmit={(e) => e.preventDefault()}
                     className="space-y-5"
                 >
-
+                    <div>
+                        <label className="font-medium">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                        />
+                    </div>
                     <div>
                         <label className="font-medium">
                             Email
@@ -98,7 +107,7 @@ export default function LoginPage() {
                     <button
                         className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
                     >
-                        Login
+                        Create account
                     </button>
                 </form>
             </div>
