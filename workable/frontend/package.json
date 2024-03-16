@@ -15,6 +15,7 @@
     "@fullcalendar/interaction": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "@google/generative-ai": "^0.3.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "clsx": "^2.1.0",
     "firebase": "^10.9.0",
