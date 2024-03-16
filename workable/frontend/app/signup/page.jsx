@@ -2,21 +2,33 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
+import { UserAuth } from "../context/AuthContext.js";
+import { useRouter } from 'next/navigation';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();  
+  const { user, googleSignIn, logOut, register } = UserAuth();
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
+    try {      
+      await register(email, password);
+      router.push('/employee-dashboard');
+    } catch (error) {
+      console.error('Error signing up: ', error);
+      router.push('/'); 
+    }
   };
+ 
 
   return (
     <main className="w-full flex">
-              <div className="w-1/3 flex flex items-center justify-center h-screen bg-white py-5">
+              <div className="w-1/3 flex items-center justify-center h-screen bg-white py-5">
             <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
                 <div className="">
                     <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" />
@@ -71,7 +83,7 @@ export default function LoginPage() {
                     <p className="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">Or continue with</p>
                 </div>
                 <form
-                    onSubmit={(e) => e.preventDefault()}
+                   onSubmit={handleSubmit}
                     className="space-y-5"
                 >
                     <div>
@@ -91,6 +103,7 @@ export default function LoginPage() {
                         <input
                             type="email"
                             required
+                            onChange={(e) => setEmail(e.target.value)}
                             className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                         />
                     </div>
@@ -101,10 +114,12 @@ export default function LoginPage() {
                         <input
                             type="password"
                             required
+                            onChange={(e) => setPassword(e.target.value)}
                             className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                         />
                     </div>
                     <button
+                        type="submit"
                         className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
                     >
                         Create account

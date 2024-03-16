@@ -1,3 +1,4 @@
+'use client'
 import { useContext, createContext, useState, useEffect } from "react";
 import {
   signInWithPopup,
@@ -43,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
 
-    async function register(email,password, username, age, qualification, school){
+    async function register(email,password){
  
         const res = await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -60,22 +61,6 @@ export const AuthContextProvider = ({ children }) => {
           console.log("Error Signing you in: ",errorMessage);
           // ..
         });
-        
-        try {
-            console.log("Consolidating Data......");
-            await setDoc(doc(db,"Users",user.uid),{
-                Age: age,
-                Email: email,
-                Qualification: qualification,
-                School: school,
-                User_id: user.uid,
-                Username: username
-               })
-        } catch (error) {
-            console.log("Error adding data to Database: ",error);
-        }finally{
-            console.log("Data Added Successfully");
-        }
     }
 
     async function login(email,password){
