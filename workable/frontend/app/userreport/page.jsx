@@ -15,7 +15,7 @@ const Userreport = () => {
         const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
         const prompt = `summary of pdf`;
 
-        const result = await model.generateContent([prompt + base64]);
+        const result = await model.generateContent([prompt,base64]);
         const response = await result.response;
         const text = response.text();
         setApiData(text);

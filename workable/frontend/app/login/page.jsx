@@ -30,7 +30,7 @@ export default function LoginPage() {
               <div className="w-1/3 flex items-center justify-center h-screen bg-white py-5">
             <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
                 <div className="">
-                    <img src="https://floatui.com/logo.svg" width={150} className="lg:hidden" />
+                    <img src="/logo.png" width={150} className="lg:hidden" />
                     <div className="mt-5 space-y-2">
                         <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Log In</h3>
                         <p className="">Create new account? <a href="javascript:void(0)" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a></p>

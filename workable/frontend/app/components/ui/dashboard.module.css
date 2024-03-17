@@ -1,5 +1,7 @@
 .container {
     display: flex;
+    background-color: #fff;
+    color: black;
   }
   
   .menu {
