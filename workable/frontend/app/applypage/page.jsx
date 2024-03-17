@@ -53,11 +53,11 @@ const Application = () => {
 
     return (<>
         <StepWithLine></StepWithLine>
-        <div className="flex h-screen">
+        <div className="flex">
 
         
         {/* Job Application Form */}
-        <div className="w-1/3 bg-white p-8">
+        <div className="w-2/3 bg-white p-8">
         <h1 className="text-3xl text-black font-semibold text-center mb-8">Job Application Form</h1>
             <form className="max-w-md text-black border-black mx-auto" onSubmit={handleSubmit}>
                 <div className="mb-6">
@@ -101,8 +101,8 @@ const Application = () => {
                    autoplay
                    speed={1.5}
                    loop
-                   src="https://lottie.host/e8b16c97-b290-4ac4-b573-7df929029e14/LzbW0QUqqD.json"
-                   style={{ height: "300px", width: "300px" }}
+                   src="https://lottie.host/2623de74-3158-4925-a707-214c76b2048f/RVWseY4Neo.json"
+                   style={{ height: "500px", width: "500px", marginTop: "100px" }}
                                  />
         </div>
     </div>

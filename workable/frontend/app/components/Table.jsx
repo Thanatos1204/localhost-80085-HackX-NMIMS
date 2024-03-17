@@ -53,7 +53,7 @@ import PredictComponent from './Predict.js';
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
             <div className="items-start justify-between md:flex">
                 <div className="max-w-lg">
-                    <h3 className="text-white text-xl font-bold sm:text-2xl">
+                    <h3 className="text-black text-xl font-bold sm:text-2xl">
                         Manage Your Team members
                     </h3>   
                     {/* <button onClick={()=>{getData()}}>get Data</button> */}
@@ -80,15 +80,15 @@ import PredictComponent from './Predict.js';
 
                         </tr>
                     </thead>
-                    <tbody className="text-white divide-y">
+                    <tbody className="text-black divide-y">
                         {
                             data.map((item, idx) => (
                                 <tr key={idx}>
                                     <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
                                         <img src={item.avatar} className="w-10 h-10 rounded-full" />
                                         <div>
-                                            <span className="block text-white text-sm font-medium">{item.Name}</span>
-                                            <span className="block text-white text-xs">{item.email}</span>
+                                            <span className="block text-black text-sm font-medium">{item.Name}</span>
+                                            <span className="block text-black text-xs">{item.email}</span>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Phone_No}</td>
