@@ -94,7 +94,7 @@ import PredictComponent from './Predict.js';
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Phone_No}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Position}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Salary}</td>
-                                    <td className="text-right px-6 whitespace-nowrap">
+                                    <td className="text-right px-6 whitespace-nowrap flex items-center justify-center mb-3">
                                         <PredictComponent/>
                                         <a href="javascript:void()" className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
                                             Edit
