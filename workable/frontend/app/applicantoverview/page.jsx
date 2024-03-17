@@ -11,6 +11,7 @@ const ApplicantsPage = () => {
   const [applicants, setApplicants] = useState([]);
   const [shortlistedApplicants, setShortlistedApplicants] = useState([]);
 
+  
   async function getData(){
     console.log("run");
     try {
@@ -40,6 +41,7 @@ useEffect(() => {
     setApplicants(applicants.filter(applicant => applicant.id !== applicantId));
   };
 
+  
   return (
     <div className="container mx-auto py-12">
       <h1 className="text-3xl font-semibold mb-6">Applicant Overview</h1>
@@ -52,7 +54,7 @@ useEffect(() => {
       <h2 className="text-2xl font-semibold mt-12 mb-4">Shortlisted Applicants</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {shortlistedApplicants.map(applicant => (
-          <ApplicantCard key={applicant.id} applicant={applicant} />
+          <ApplicantCard key={applicant.id} applicant={applicant}/>
         ))}
       </div>
     </div>

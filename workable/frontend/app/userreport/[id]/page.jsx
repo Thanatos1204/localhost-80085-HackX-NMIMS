@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useParams } from "next/navigation";
-
+import { db } from "../../firebase";
+import { collection, addDoc, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 
 
 
@@ -14,6 +16,17 @@ const Userreport = () => {
       );
       const params=useParams();
 
+      //params.id = doc
+      async function getData(){
+       try {
+        const docRef = doc(db,'Applicants',params.id);
+        const docSnapshot = await getDoc(docRef);
+        console.log(docSnapshot.data());  
+       } catch (error) {
+        
+       } 
+      }
+      
 
 
       const fetchData = async () => {
@@ -38,6 +51,7 @@ const Userreport = () => {
     return (<>
          <div className="border-2 border-blue-600 p-5 w-24 h-32">
          <p>{apiData}</p>
+         <button onClick={getData}>HI</button>
          </div>
          
         </>
