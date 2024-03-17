@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../firebase.js";
 import { collection, addDoc, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
-import AddMemberPopup from "./AddMemberPopUp.jsx"; 
+import AddMemberPopup from "./AddMemberPopUp.jsx";
+import PredictComponent from './Predict.js';
 
  const Table = () => {
 
@@ -94,6 +95,7 @@ import AddMemberPopup from "./AddMemberPopUp.jsx";
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Position}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Salary}</td>
                                     <td className="text-right px-6 whitespace-nowrap">
+                                        <PredictComponent/>
                                         <a href="javascript:void()" className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
                                             Edit
                                         </a>

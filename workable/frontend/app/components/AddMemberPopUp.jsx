@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { db } from "../firebase.js";
 import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { getDocs } from "firebase/firestore";  
+import { getDocs } from "firebase/firestore";
+import SelectComponent from './SelectComponenet.js';  
 
 const AddMemberPopup = ({ close }) => {
 
@@ -10,6 +11,18 @@ const AddMemberPopup = ({ close }) => {
     const [phone, setPhone] = useState('');
     const [pos, setPos] = useState('');
     const [salary, setSalary] = useState('');
+    const [dept, setDept] = useState('');
+    const [tenure, setTenure] = useState('');
+    const [age, setAge] = useState('');
+    const [perf, setPerf] = useState('');
+    const [managersatisfaction, setManagerSatisfaction] = useState('');
+    const [wlb, setWlb] = useState('');
+    const [children, setChildren] = useState('');
+    const [selectedValue, setSelectedValue] = useState("0");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
     const onSubmit = async(e)=>{
         
@@ -20,8 +33,15 @@ const AddMemberPopup = ({ close }) => {
                 Name: name,
                 Phone_No: phone,
                 Position: pos,
-                Salary: salary
-            }
+                Salary: salary,
+                Department: dept,
+                Tenure: tenure,
+                Age: age,
+                PerformanceRating: perf,
+                ManagerSatisfaction: managersatisfaction,
+                WorkLifeBalance: wlb,
+                NumberOfChildren: children
+            }// Dept,pos,ten,age,perf,sal,msatis,wlb,child
 
             await setDoc(docRef,data);
             console.log("Pushed Data");            
@@ -43,7 +63,7 @@ const AddMemberPopup = ({ close }) => {
                 Name:
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                 id="name"
                 name="name"
                 type="text"
@@ -57,7 +77,7 @@ const AddMemberPopup = ({ close }) => {
                 Employee Id:
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                 id="emp_id"
                 name="emp_id"
                 type="text"
@@ -71,7 +91,7 @@ const AddMemberPopup = ({ close }) => {
                 Phone No.:
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                 id="phone"
                 name="phone"
                 type="text"
@@ -80,14 +100,20 @@ const AddMemberPopup = ({ close }) => {
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pos">
-                Position:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="pos"
-                name="pos"
+            <div className="text-black mb-4">
+            <label htmlFor="department">
+              Department:
+            </label>
+                <SelectComponent value={selectedValue} onChange={handleChange} />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pos">
+                  Position:
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+                  id="pos"
+                  name="pos"
                 type="text"
                 placeholder="Enter Employee Position"
                 required
@@ -99,7 +125,7 @@ const AddMemberPopup = ({ close }) => {
                 Salary:
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                 id="salary"
                 name="salary"
                 type="text"
