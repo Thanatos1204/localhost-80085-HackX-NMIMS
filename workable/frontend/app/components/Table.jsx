@@ -95,7 +95,15 @@ import PredictComponent from './Predict.js';
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Position}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{item.Salary}</td>
                                     <td className="text-right px-6 whitespace-nowrap">
-                                        <PredictComponent/>
+                                    <PredictComponent
+                                    features={
+                                    idx === 0
+                                        ? [0, 0, 3, 23, 1, 112069, 9, 2, 0]
+                                        : idx === 1
+                                        ? [0, 1, 9, 52, 2, 83174, 6, 8, 4]
+                                        : [6, 0, 9, 48, 3, 99385, 6, 2, 3]
+                                    }
+                                    />
                                         <a href="javascript:void()" className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
                                             Edit
                                         </a>

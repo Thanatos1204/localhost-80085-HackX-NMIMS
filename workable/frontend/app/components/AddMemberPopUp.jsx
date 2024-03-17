@@ -2,7 +2,8 @@ import { useState } from "react";
 import { db } from "../firebase.js";
 import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
-import SelectComponent from './SelectComponenet.js';  
+import SelectComponent from './SelectComponenet.js';
+  
 
 const AddMemberPopup = ({ close }) => {
 
@@ -18,7 +19,17 @@ const AddMemberPopup = ({ close }) => {
     const [managersatisfaction, setManagerSatisfaction] = useState('');
     const [wlb, setWlb] = useState('');
     const [children, setChildren] = useState('');
-    const [selectedValue, setSelectedValue] = useState("0");
+    const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
+
+  const handleDepartmentChange = (department) => {
+    setSelectedDepartment(department);
+  };
+
+  const handleRoleChange = (role) => {
+    setSelectedRole(role);
+  };
+    
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -100,12 +111,10 @@ const AddMemberPopup = ({ close }) => {
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
-            <div className="text-black mb-4">
-            <label htmlFor="department">
-              Department:
-            </label>
-                <SelectComponent value={selectedValue} onChange={handleChange} />
-              </div>
+            <div>
+      <h2>Select Department and Role:</h2>
+      <SelectComponent value={{ department: selectedDepartment, role: selectedRole }} onChange={handleDepartmentChange} />
+    </div>
               <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pos">
                   Position:
