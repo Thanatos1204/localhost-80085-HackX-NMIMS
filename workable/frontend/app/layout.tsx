@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import FinanceContextProvider from "../app/context/finance-context";
+
 import "./globals.css";
 
 const alice = Roboto({ 
@@ -21,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthContextProvider>
-        <body className={alice.className}>{children}</body>
+        <FinanceContextProvider>
+        <ToastContainer />
+          <body className={alice.className}>{children}</body>
+        </FinanceContextProvider>
       </AuthContextProvider>
       
     </html>

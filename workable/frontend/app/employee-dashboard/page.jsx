@@ -17,7 +17,7 @@ const Dashboard =() => {
  const cards = [
   {
     id: 1,
-    title: "Total Complaints",
+    title: "Total Employees",
     number: 76,
     change: 12,
   },
